@@ -5,10 +5,13 @@
   </head>
   <body>
     <div class="container">
-      <h1 id="toc_0">tokuhirom&#39;s maven repo</h1>
+      <div class="row">
+        <h1 id="toc_0">tokuhirom&#39;s maven repo</h1>
 
 <p>This is a @tokuhirom&#39;s maven repo.
 I&#39;m using <a href="http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/">camerick&#39;s method</a> for creating maven repository. Maven central is too hard for me.</p>
+
+<h2 id="toc_1">How do I use the libraries in this repository?</h2>
 
 <p>You can use this repository by following:</p>
 
@@ -20,6 +23,41 @@ I&#39;m using <a href="http://cemerick.com/2010/08/24/hosting-maven-repos-on-git
 &lt;/repositories&gt;
 </code></pre>
 
+<h2 id="toc_2">How do I create the maven repository like this?</h2>
+
+<p>Add the &#39;distributionManagement&#39; section in your project pod.xml.</p>
+
+<pre><code>&lt;distributionManagement&gt;
+    &lt;repository&gt;
+        &lt;id&gt;repo&lt;/id&gt;
+        &lt;url&gt;https://github.com/cemerick/cemerick-mvn-repo/raw/master/releases&lt;/url&gt;
+    &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+        &lt;id&gt;snapshot-repo&lt;/id&gt;
+        &lt;url&gt;https://github.com/cemerick/cemerick-mvn-repo/raw/master/snapshots&lt;/url&gt;
+    &lt;/snapshotRepository&gt;
+&lt;/distributionManagement&gt;
+</code></pre>
+
+<p>And I wrote a tiny utility script.  You can install it by cpanm command.</p>
+
+<pre><code>curl -L http://cpanmin.us | perl - -nv git://github.com/tokuhirom/mvnutil.git
+</code></pre>
+
+<p>Please look <a href="https://github.com/tokuhirom/mvnutil/">tokuhirom/mvnutil</a> for more details.</p>
+
+      </div>
+      <div class="row">
+        ARRAY(0x29dcb50)
+<h3>dbinspector</h3>
+        <textarea><dependency>
+  <groupId>me.geso</groupId>
+  <artifactId>dbinspector</artifactId>
+  <version>0.0.4</version>
+</dependency>
+</textarea>
+        <hr>
+      </div>
     </div>
   </body>
 </html>

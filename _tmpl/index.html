@@ -1,3 +1,4 @@
+? my ($readme, $modules) = @_;
 <!doctype html>
 <html>
   <head>
@@ -5,7 +6,22 @@
   </head>
   <body>
     <div class="container">
-      <?= $_[0] ?>
+      <div class="row">
+        <?= $readme ?>
+      </div>
+      <div class="row">
+        <?= $modules ?>
+? for my $x (@$modules) {
+<h3><?= $x->{artifactId} ?></h3>
+        <textarea><dependency>
+  <groupId><?= $x->{groupId} ?></groupId>
+  <artifactId><?= $x->{artifactId} ?></artifactId>
+  <version><?= $x->{version} ?></version>
+</dependency>
+</textarea>
+? }
+        <hr>
+      </div>
     </div>
   </body>
 </html>
