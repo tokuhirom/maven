@@ -2,8 +2,7 @@ maven
 =====
 
 This is a @tokuhirom's maven repo.
-
-http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/
+I'm using [camerick's method](http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/) for creating maven repository. Maven central is too hard for me.
 
 You can use this repository by following:
 
