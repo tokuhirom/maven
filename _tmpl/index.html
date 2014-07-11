@@ -13,12 +13,11 @@
         <?= $modules ?>
 ? for my $x (@$modules) {
 <h3><?= $x->{artifactId} ?></h3>
-        <textarea><dependency>
+        <textarea cols="80" rows="5"><dependency>
   <groupId><?= $x->{groupId} ?></groupId>
   <artifactId><?= $x->{artifactId} ?></artifactId>
   <version><?= $x->{version} ?></version>
-</dependency>
-</textarea>
+</dependency></textarea>
 ? }
         <hr>
       </div>
