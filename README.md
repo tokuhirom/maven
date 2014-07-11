@@ -22,11 +22,11 @@ Add the 'distributionManagement' section in your project pod.xml.
     <distributionManagement>
         <repository>
             <id>repo</id>
-            <url>https://github.com/cemerick/cemerick-mvn-repo/raw/master/releases</url>
+            <url>https://tokuhirom.github.io/maven/releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshot-repo</id>
-            <url>https://github.com/cemerick/cemerick-mvn-repo/raw/master/snapshots</url>
+            <url>https://tokuhirom.github.io/maven/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
