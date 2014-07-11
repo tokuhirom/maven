@@ -7,12 +7,10 @@
   <body>
     <div class="container">
       <div class="row">
-        <?= $readme ?>
-      </div>
-      <div class="row">
 ? for my $x (@$modules) {
         <h3><?= $x->{artifactId} ?></h3>
         <p><?= $x->{description} ?></p>
+        <p><a href="./javadoc/<?= $x->{groupId} =~ s!\.!/!gr ?>/<?= $x->{version} ?>/apidocs/">javadoc</a></p>
         <textarea cols="80" rows="5"><dependency>
   <groupId><?= $x->{groupId} ?></groupId>
   <artifactId><?= $x->{artifactId} ?></artifactId>
@@ -20,6 +18,10 @@
 </dependency></textarea>
 ? }
         <hr>
+      </div>
+      <hr>
+      <div class="row">
+        <?= $readme ?>
       </div>
     </div>
   </body>
