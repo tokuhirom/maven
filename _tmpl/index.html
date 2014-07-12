@@ -2,22 +2,28 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <title>tokuhirom's maven repo</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
+    <div class="jumbotron" style="background-color: #efffe4; padding-top: 40px; padding-bottom: 40px; text-align: center; margin-bottom: 20px;">
+        <h1>tokuhirom's maven repo</h1>
+    </div>
     <div class="container">
       <div class="row">
 ? for my $x (@$modules) {
-        <h3><?= $x->{artifactId} ?></h3>
-        <p><?= $x->{description} ?></p>
-        <p><a href="./javadoc/<?= $x->{groupId} =~ s!\.!/!gr ?>/<?= $x->{version} ?>/apidocs/">javadoc</a></p>
-        <textarea cols="80" rows="5"><dependency>
+        <div class="panel panel-default">
+          <div class="panel-heading"><?= $x->{artifactId} ?></div>
+          <div class="panel-body">
+            <p><?= $x->{description} ?> <a href="./javadoc/<?= $x->{groupId} =~ s!\.!/!gr ?>/<?= $x->{artifactId} ?>/<?= $x->{latest} ?>/apidocs/index.html"><span class="glyphicon glyphicon-book"></span> javadoc</a></p>
+          <textarea cols="80" rows="5"><dependency>
   <groupId><?= $x->{groupId} ?></groupId>
   <artifactId><?= $x->{artifactId} ?></artifactId>
   <version><?= $x->{version} ?></version>
 </dependency></textarea>
+          </div>
+        </div>
 ? }
-        <hr>
       </div>
       <hr>
       <div class="row">
