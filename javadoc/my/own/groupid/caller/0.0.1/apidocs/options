@@ -1,0 +1,24 @@
+-classpath
+'/home/tokuhirom/Dropbox/JavaScratchPad/caller/target/classes'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/tokuhirom/Dropbox/JavaScratchPad/caller/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2014. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/tokuhirom/.mvn-release/javadoc/my/own/groupid/caller/0.0.1/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'caller 0.0.1 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/home/tokuhirom/Dropbox/JavaScratchPad/caller/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'caller 0.0.1 API'
