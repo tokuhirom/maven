@@ -1,0 +1,24 @@
+-classpath
+'/home/tokuhirom/Dropbox/JavaScratchPad/nanobench/target/classes'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/tokuhirom/Dropbox/JavaScratchPad/nanobench/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2014. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/tokuhirom/.mvn-release/javadoc/me/geso/nanobench/0.0.3/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'nanobench 0.0.3 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/home/tokuhirom/Dropbox/JavaScratchPad/nanobench/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'nanobench 0.0.3 API'
