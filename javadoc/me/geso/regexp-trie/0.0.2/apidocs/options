@@ -1,0 +1,24 @@
+-classpath
+'/home/tokuhirom/Dropbox/JavaScratchPad/regexp-trie/target/classes'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/tokuhirom/Dropbox/JavaScratchPad/regexp-trie/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2014. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/tokuhirom/.mvn-release/javadoc/me/geso/regexp-trie/0.0.2/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'regexp-trie 0.0.2 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/home/tokuhirom/Dropbox/JavaScratchPad/regexp-trie/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'regexp-trie 0.0.2 API'
