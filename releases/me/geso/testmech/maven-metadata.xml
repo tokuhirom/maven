@@ -3,7 +3,7 @@
   <groupId>me.geso</groupId>
   <artifactId>testmech</artifactId>
   <versioning>
-    <release>0.3.0</release>
+    <release>0.4.0</release>
     <versions>
       <version>0.0.1</version>
       <version>0.1.0</version>
@@ -17,7 +17,8 @@
       <version>0.2.2</version>
       <version>0.2.3</version>
       <version>0.3.0</version>
+      <version>0.4.0</version>
     </versions>
-    <lastUpdated>20140825080154</lastUpdated>
+    <lastUpdated>20140825213618</lastUpdated>
   </versioning>
 </metadata>
