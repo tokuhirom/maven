@@ -3,12 +3,14 @@
   <groupId>me.geso</groupId>
   <artifactId>avans</artifactId>
   <versioning>
+    <release>0.6.0</release>
     <versions>
       <version>0.4.1-SNAPSHOT</version>
       <version>0.4.2-SNAPSHOT</version>
       <version>0.5.9-SNAPSHOT</version>
       <version>0.5.10-SNAPSHOT</version>
+      <version>0.6.0</version>
     </versions>
-    <lastUpdated>20140903090418</lastUpdated>
+    <lastUpdated>20140904082843</lastUpdated>
   </versioning>
 </metadata>
