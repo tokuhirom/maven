@@ -3,7 +3,7 @@
   <groupId>me.geso</groupId>
   <artifactId>tinyvalidator</artifactId>
   <versioning>
-    <release>0.3.0</release>
+    <release>0.3.1</release>
     <versions>
       <version>0.0.1</version>
       <version>0.0.2</version>
@@ -15,7 +15,8 @@
       <version>0.1.2</version>
       <version>0.2.0</version>
       <version>0.3.0</version>
+      <version>0.3.1</version>
     </versions>
-    <lastUpdated>20140910105759</lastUpdated>
+    <lastUpdated>20140910134719</lastUpdated>
   </versioning>
 </metadata>
