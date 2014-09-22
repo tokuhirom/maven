@@ -3,7 +3,7 @@
   <groupId>me.geso</groupId>
   <artifactId>tinyorm</artifactId>
   <versioning>
-    <release>0.22.0</release>
+    <release>0.23.0</release>
     <versions>
       <version>0.0.2</version>
       <version>0.0.3</version>
@@ -40,7 +40,8 @@
       <version>0.21.1</version>
       <version>0.21.2</version>
       <version>0.22.0</version>
+      <version>0.23.0</version>
     </versions>
-    <lastUpdated>20140922000908</lastUpdated>
+    <lastUpdated>20140922015251</lastUpdated>
   </versioning>
 </metadata>
