@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>tokuhirom's maven repo</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+      .panel-body a {
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron" style="background-color: #efffe4; padding-top: 40px; padding-bottom: 40px; text-align: center; margin-bottom: 20px;">
+        <h1>tokuhirom's maven repo</h1>
+    </div>
+    <div class="container">
+      <ul>
+      <% projects.each {|project| %>
+        <li><a href="/project/<%= project.getGroupId() %>.<%= project.getArtifactId() %>/"><%= project.getArtifactId() %></a></li>
+      <% } %>
+    </ul>
+    </div>
+  </body>
+</html>
