@@ -17,7 +17,7 @@
     <div class="container">
       <ul>
       <% projects.each {|project| %>
-        <li><a href="/project/<%= project.getGroupId() %>.<%= project.getArtifactId() %>/"><%= project.getArtifactId() %></a></li>
+        <li><a href="./project/<%= project.getGroupId() %>.<%= project.getArtifactId() %>/"><%= project.getArtifactId() %></a></li>
       <% } %>
     </ul>
     </div>
