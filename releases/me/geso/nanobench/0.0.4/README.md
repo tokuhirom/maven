@@ -1,61 +1,77 @@
-# avans
+nanobench
+=========
 
-[![Build Status](https://travis-ci.org/tokuhirom/avans.svg?branch=master)](https://travis-ci.org/tokuhirom/avans)
+This is a tiny benchmarking library for Java 8.
 
-Tiny and thin web application framework for Java 8.
+## SYNOPSIS
 
-## Motivation
+Benchmark code(ListBenchmark.java):
+```
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-I need tiny, thin, and simple web application framework for Java 8.
-I need the web application framework like Sledge(Popular web application framework for Perl5).
+public class ListBenchmark {
+    // Benchmarking method must be started with 'bench'.
+    public void benchArrayList() {
+        List<Integer> l = new ArrayList<>();
+        for (int i=0; i<1_000_000; ++i) {
+            l.add(i);
+        }
+    }
 
-## Architecture
+    public void benchLinkedList() {
+        List<Integer> l = new LinkedList<>();
+        for (int i=0; i<1_000_000; ++i) {
+            l.add(i);
+        }
+    }
+}
+```
 
-You can build web application based on servlet API.
-That's all.
+Command line:
+```
+> javac ListBenchmark.java
+> java -jar nanobench.jar ListBenchmark
 
-## Components
 
-### Core dependencies
+Score:
 
- * mustache - very fast template engine.
- * jackson - really fast JSON serializer/deserializer
- * commons-fileupload - multipart/form-data processor
+benchArrayList:  1 wallclock secs ( 1.03 usr +  0.10 sys =  1.13 CPU) @ 142.79/s (n=162)
+benchLinkedList:  2 wallclock secs ( 1.07 usr +  0.15 sys =  1.21 CPU) @ 146.54/s (n=178)
 
-### And recommended modules
+Comparison chart:
 
- * testmech - testing framework for web applications
- * tinyorm - Tiny O/R Mapper library
+                    Rate  benchArrayList  benchLinkedList
+   benchArrayList  143/s              --              -3%
+  benchLinkedList  147/s              3%               --
+```
 
-## FAQ
+## DESCRIPTION
 
-### Is there a HTML::FillInForm support?
+nanobench is a tiny benchmarking library.
 
-No there isn't. You should do it with JavaScript.
+This library is really tiny. There is no dependencies. Only one file.
+You can copy Benchmark.java into your project.
 
-## TODO
+## INSTALLATION
 
- * Add XSRF protection support.
+You can get a jar file from github.
+
+https://github.com/tokuhirom/maven/tree/gh-pages/releases/me/geso/nanobench
+
+Also, you can get a jar by maven: [tokuhirom's maven repo](https://tokuhirom.github.io/maven/)
 
 ## LICENSE
 
-  The MIT License (MIT)
-  Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ <tokuhirom@gmail.com>
+Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ <tokuhirom@gmail.com>
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the “Software”), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
+The strategy was inspired from Perl5's Benchmark.pm. It's covered under the Perl 5 License.
 
-  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
+## THANKS TO
+
+This library was inspired from Benchmark.pm from Perl5.
+http://search.cpan.org/~rjbs/perl-5.20.0/lib/Benchmark.pm
+

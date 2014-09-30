@@ -1,61 +1,40 @@
-# avans
+# Routes for Java
 
-[![Build Status](https://travis-ci.org/tokuhirom/avans.svg?branch=master)](https://travis-ci.org/tokuhirom/avans)
+[![Build Status](https://travis-ci.org/tokuhirom/routes.svg?branch=master)](https://travis-ci.org/tokuhirom/routes)
 
-Tiny and thin web application framework for Java 8.
+This is a tiny routing library for Java.
 
-## Motivation
+## Synopsis
 
-I need tiny, thin, and simple web application framework for Java 8.
-I need the web application framework like Sledge(Popular web application framework for Perl5).
 
-## Architecture
+### Your WebAction.java
 
-You can build web application based on servlet API.
-That's all.
+	@FunctionalInterface
+	public interface WebAction {
+		void call(ServletRequest req, ServletResponse res);
+	}
 
-## Components
+### Your routing code.
 
-### Core dependencies
+		// Create routing rules.
+		router = new WebRouter<WebAction>();
+		router.get("/", RootController::index)
+				.get("/sample-json", RootController::sampleJson);
+				
+		// Match
+		RoutingResult rr = router.match("GET", "/sample-json");
+		if (rr != null) {
+			if (rr.methodAllowed()) {
+				return res405();
+			} else {
+				WebAction dst = rr.getDestination();
+				return dst.invoke();
+			}
+		} else {
+			return res404();
+		}
 
- * mustache - very fast template engine.
- * jackson - really fast JSON serializer/deserializer
- * commons-fileupload - multipart/form-data processor
 
-### And recommended modules
+## Dependencies
 
- * testmech - testing framework for web applications
- * tinyorm - Tiny O/R Mapper library
-
-## FAQ
-
-### Is there a HTML::FillInForm support?
-
-No there isn't. You should do it with JavaScript.
-
-## TODO
-
- * Add XSRF protection support.
-
-## LICENSE
-
-  The MIT License (MIT)
-  Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ <tokuhirom@gmail.com>
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the “Software”), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
+ * Java 8

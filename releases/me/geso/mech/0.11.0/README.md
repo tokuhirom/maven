@@ -1,61 +1,85 @@
-# avans
+# mech
 
-[![Build Status](https://travis-ci.org/tokuhirom/avans.svg?branch=master)](https://travis-ci.org/tokuhirom/avans)
+[![Build Status](https://travis-ci.org/tokuhirom/mech.svg?branch=master)](https://travis-ci.org/tokuhirom/mech)
 
-Tiny and thin web application framework for Java 8.
+Testing library for web applications. You can test web application based on servlet API very easy.
 
-## Motivation
+## SYNOPSIS
 
-I need tiny, thin, and simple web application framework for Java 8.
-I need the web application framework like Sledge(Popular web application framework for Perl5).
+Access to the external service.
 
-## Architecture
+    @Test
+    public void testGoogle() throws Exception {
+        try (Mech mech = new Mech("http://google.com/")) {
+            try (MechResponse res = mech.get("/").execute()) {
+                assertEquals(200, res.getStatusCode());
+            }
+        }
+    }
 
-You can build web application based on servlet API.
-That's all.
+Testing with MechJettyServlet.
 
-## Components
+    class MyServlet extends HttpServlet {
+        protected void service(HttpServletRequest req, HttpServletResponse resp)
+                throws ServletException, IOException {
+            resp.getWriter().write("Hello");
+        }
 
-### Core dependencies
+    }
 
- * mustache - very fast template engine.
- * jackson - really fast JSON serializer/deserializer
- * commons-fileupload - multipart/form-data processor
+    public class ServletTest {
+        @Test
+        public void test() throws Exception {
+            try (MechJettyServlet mech = new MechJettyServlet(new MyServlet())) {
+                try (MechResponse res = mech.get("/").execute()) {
+                    assertEquals(200, res.getStatusCode());
+                    assertEquals("Hello", res.getContentString());
+                }
+            }
+        }
+    }
 
-### And recommended modules
+## Features
 
- * testmech - testing framework for web applications
- * tinyorm - Tiny O/R Mapper library
+ * Really easy Servlet testing
+ * POST with application/json
+ * POST with multipart/form-data
+ * fluent interface.
 
-## FAQ
+## Install with maven
 
-### Is there a HTML::FillInForm support?
+See http://tokuhirom.github.io/maven/
 
-No there isn't. You should do it with JavaScript.
+## DEPENDENCIES
 
-## TODO
+  * jetty
+  * Java 1.8+
+  * apache httpclient
+  * jackson
 
- * Add XSRF protection support.
+## API Stability
+
+I will change API without notice. But I may respect the semver.
 
 ## LICENSE
 
-  The MIT License (MIT)
-  Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ <tokuhirom@gmail.com>
+    The MIT License (MIT)
+    Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ <tokuhirom@gmail.com>
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the “Software”), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the “Software”), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
+    THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.

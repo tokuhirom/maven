@@ -1,41 +1,101 @@
-# avans
+# tinyvalidator
 
-[![Build Status](https://travis-ci.org/tokuhirom/avans.svg?branch=master)](https://travis-ci.org/tokuhirom/avans)
+This is a tiny validation library for Java. This library does not support JSR 303.
+This library implements subset of JSR 303 Bean validator.
 
-Tiny and thin web application framework for Java 8.
+## SYNOPSIS
 
-## Motivation
+    Validator validator = new Validator();
+    List<Violation> violations = validator.validate(foo);
+    String msg = violations.stream()
+      .map(violation -> violation.getName() + " " + violation.getMessage())
+      .collect(Collectors.joining(","));
 
-I need tiny, thin, and simple web application framework for Java 8.
-I need the web application framework like Sledge(Popular web application framework for Perl5).
+Bean definition:
 
-## Architecture
+    @Data
+    public static class Foo {
+      @Pattern(regexp = "\\A[0-9]+\\z")
+      private String bar;
+    }
 
-You can build web application based on servlet API.
-That's all.
+## Constraints
 
-## Components
+### `@NotNull`
 
-### Core dependencies
+    @Data
+    public static class Foo {
+      @NotNull
+      private String bar;
+    }
 
- * mustache - very fast template engine.
- * jackson - really fast JSON serializer/deserializer
- * commons-fileupload - multipart/form-data processor
+bar should not be null.
 
-### And recommended modules
+### `@Size`
 
- * testmech - testing framework for web applications
- * tinyorm - Tiny O/R Mapper library
+    @Data
+    public static class Foo {
+      @Size(min=2, max=5)
+      private String bar;
+    }
 
-## FAQ
+`bar` should be grater than or equals 2, less than or equals 5.
 
-### Is there a HTML::FillInForm support?
+min's default value is 0, max's default value is `Integer.MAX_VALUE`.
 
-No there isn't. You should do it with JavaScript.
+### `@Pattern`
 
-## TODO
+    @Data
+    public static class Foo {
+      @Pattern(regexp="\\A[0-9]+\z")
+      private String bar;
+    }
 
- * Add XSRF protection support.
+`bar` should match the regular rexpression.
+
+### `@HttpUrl`
+
+    @Data
+    public static class Foo {
+      @HttpUrl
+      private String url;
+    }
+
+Validate the field as valid HTTP URL.
+
+### `@Email`
+
+    @Data
+    public static class Foo {
+      @Email
+      private String email;
+    }
+
+Validate the field as valid E-mail address.
+
+## HOW DO I DEBUG VALIDATION RULE USING THIS LIBRARY?
+
+This library output logs with slf4j. The package name is under `the me.geso.tinyvalidator`. Please set the debug log level as `debug`.
+
+If you are using slf4j-simple, please try following VM options.
+
+    -Dorg.slf4j.simpleLogger.defaultLogLevel=debug
+
+
+## HOW DO I IMPLEMENT MY OWN RULE?
+
+ 1. Implement annotation
+ 2. Implement constraint validator
+
+## MOTIVATION
+
+I want to use tiny and thin validation library.
+
+I know JSR 303. Ofcource. But I need really *tiny* and *thin* library.
+
+## AUTHOR
+
+Tokuhiro Matsuno <tokuhirom@gmail.com>
 
 ## LICENSE
 

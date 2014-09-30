@@ -1,41 +1,92 @@
-# avans
+tinyorm
+=======
 
-[![Build Status](https://travis-ci.org/tokuhirom/avans.svg?branch=master)](https://travis-ci.org/tokuhirom/avans)
+[![Build Status](https://travis-ci.org/tokuhirom/tinyorm.svg?branch=master)](https://travis-ci.org/tokuhirom/tinyorm)
 
-Tiny and thin web application framework for Java 8.
+This is a tiny o/r mapper for Java 8.
 
-## Motivation
+## Setup
 
-I need tiny, thin, and simple web application framework for Java 8.
-I need the web application framework like Sledge(Popular web application framework for Perl5).
+main/java/myapp/DB.java
 
-## Architecture
+    public DB extends TinyORM {
+      public void getConnection() {
+        return Context.getContext().getConnection();
+      }
+    }
 
-You can build web application based on servlet API.
-That's all.
+main/java/myapp/rows/Member.java
 
-## Components
+    @Table("member")
+    @Data // lombok
+    @EqualsAndHashCode(callSuper = false)
+    public Member extends ActiveRecord<Member> {
+      private long id;
+      private String name;
+    }
 
-### Core dependencies
+## Examples
 
- * mustache - very fast template engine.
- * jackson - really fast JSON serializer/deserializer
- * commons-fileupload - multipart/form-data processor
+Create new database object.
 
-### And recommended modules
+    DB db = new DB();
 
- * testmech - testing framework for web applications
- * tinyorm - Tiny O/R Mapper library
+### Selecting one row.
 
-## FAQ
+    Optional<Member> member = db.single(Member.class)
+      .where("id=?", 1)
+      .execute();
 
-### Is there a HTML::FillInForm support?
+### Selecting rows.
 
-No there isn't. You should do it with JavaScript.
+    List<Member> member = db.single(Member.class)
+      .where("name LIKE CONCAT(?, '%')", "John")
+      .execute();
 
-## TODO
+### Insert row
 
- * Add XSRF protection support.
+    db.insert(Member.class)
+      .value("name", "John")
+      .execute();
+
+### Insert row with form class.
+
+    @Data // lombok
+    class MemberInsertForm {
+      private String name;
+    }
+    
+    MemberInsertForm form = new MemberInsertForm();
+    form.name = name;
+    db.insert(Member.class).valueByBean(form).execute();
+
+### Update row with form class.
+
+    @Data // lombok
+    class MemberUpdateForm {
+      private String name;
+    }
+    
+    MemberUpdateForm form = new MemberUpdateForm();
+    form.name = name;
+    Member member = db.single(Member.class)
+      .where("id=?", 1)
+      .execute()
+      .get();
+    member.updateByBean(form);
+
+### Delete row
+
+    Member member = db.single(Member.class)
+      .where("id=?", 1)
+      .execute()
+      .get();
+    member.delete();
+
+## HOOKS
+
+You can override `TinyORM#BEFORE_INSERT` and `TinyORM#BEFORE_UPDATE` methods.
+You can fill createdOn and updatedOn columns by this.
 
 ## LICENSE
 
