@@ -17,7 +17,14 @@
     <div class="container">
       <ul>
       <% projects.each {project -> %>
-      <li><a href="./project/<%= project.getGroupId() %>.<%= project.getArtifactId() %>/"><%= project.getArtifactId() %>(<%= project.version %>)</a> <img src="https://travis-ci.org/${project.latestPom.repoOwner}/${project.latestPom.repoName}.svg?branch=master"></li>
+      <li>
+        <a href="./project/<%= project.getGroupId() %>.<%= project.getArtifactId() %>/"><%= project.getArtifactId() %>(<%= project.version %>)</a>
+        <% if (project.repo) { %>
+          <a href="https://travis-ci.org/${project.repo.owner}/${project.repo.name}">
+            <img src="https://travis-ci.org/${project.repo.owner}/${project.repo.name}.svg?branch=master">
+          </a>
+        <% } %>
+      </li>
       <% } %>
     </ul>
     </div>
