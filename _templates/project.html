@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title><%= project.getArtifactId %></title>
+    <title><%= project.artifactId %></title>
     <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -12,21 +12,19 @@
   </head>
   <body>
     <div class="jumbotron" style="background-color: #efffe4; padding-top: 40px; padding-bottom: 40px; text-align: center; margin-bottom: 20px;">
-      <h1><%= project.getArtifactId %></h1>
+      <h1><%= project.artifactId %></h1>
     </div>
     <div class="container">
       <ul>
             <p>
             <!-- TODO: show description from latest release -->
-            <a href="../../javadoc/<%= project.getGroupId.gsub(/\./, '/') %>/<%= project.getArtifactId %>/<%= project.getReleaseVersion %>/apidocs/index.html">
+            <a href="../../javadoc/<%= project.groupId.replaceAll(/\./, '/') %>/<%= project.artifactId %>/<%= project.version %>/apidocs/index.html">
               <span class="fa fa-file-text-o"></span> javadoc
             </a>
-            <!--
             TODO: Show link for github
-            <a href="<?= $x->{primary}{scm}{url} ?>">
+            <a href="<%= project.latestPom.scmUrl %>">
               <span class="fa fa-github"></span> github
             </a>
-            -->
             </p>
             <textarea cols="80" rows="5"><repositories>
   <repository>
@@ -36,9 +34,9 @@
 </repositories>
 <dependencies>
   <dependency>
-    <groupId><%= project.getGroupId %></groupId>
-    <artifactId><%= project.getArtifactId %></artifactId>
-    <version><%= project.getReleaseVersion %></version>
+    <groupId><%= project.groupId %></groupId>
+    <artifactId><%= project.artifactId %></artifactId>
+    <version><%= project.version %></version>
   </dependency>
 </dependencies></textarea>
     </ul>
