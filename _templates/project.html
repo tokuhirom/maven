@@ -15,13 +15,12 @@
       <h1><%= project.artifactId %></h1>
     </div>
     <div class="container">
+      <p><%= project.latestPom.description %></p>
       <ul>
             <p>
-            <!-- TODO: show description from latest release -->
             <a href="../../javadoc/<%= project.groupId.replaceAll(/\./, '/') %>/<%= project.artifactId %>/<%= project.version %>/apidocs/index.html">
               <span class="fa fa-file-text-o"></span> javadoc
             </a>
-            TODO: Show link for github
             <a href="<%= project.latestPom.scmUrl %>">
               <span class="fa fa-github"></span> github
             </a>
@@ -40,6 +39,11 @@
   </dependency>
 </dependencies></textarea>
     </ul>
+
+    <hr>
+
+    <div class="readme"><%= project.readme %></div>
+
     </div>
   </body>
 </html>
