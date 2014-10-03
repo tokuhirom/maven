@@ -16,13 +16,13 @@
     </div>
     <div class="container">
       <div class="row">
-      <p>avans-session-spymemcached</p>
+      <p>spymemcached as session storage</p>
       <ul>
             <p>
-            <a href="../../javadoc/me/geso/avans-session-spymemcached/0.0.2/apidocs/index.html">
+            <a href="../../javadoc/me/geso/avans-session-spymemcached/0.27.3/apidocs/index.html">
               <span class="fa fa-file-text-o"></span> javadoc
             </a>
-            <a href="https://github.com/tokuhirom/avans-session-spymemcached">
+            <a href="">
               <span class="fa fa-github"></span> github
             </a>
             </p>
@@ -36,62 +36,14 @@
   <dependency>
     <groupId>me.geso</groupId>
     <artifactId>avans-session-spymemcached</artifactId>
-    <version>0.0.2</version>
+    <version>0.27.3</version>
   </dependency>
 </dependencies></textarea>
     </ul>
 
     <hr>
 
-    <div class="readme"><h1>avans-session-spymemcached</h1><p><a href="https://travis-ci.org/tokuhirom/avans-session-spymemcached"><img src="https://travis-ci.org/tokuhirom/avans-session-spymemcached.svg?branch=master"  alt="Build Status"/></a></p><p>Avans' session storage library using spymemcached. spymemcached is a popular implementation of memcached client library.</p><h2>SYNOPSIS</h2>
-<pre><code>public static class MyController extends ControllerBase implements
-    SessionMixin {
-  private static final SecretKeySpec signingKey = new SecretKeySpec(&quot;My Secret&quot;.getBytes(), &quot;HmacSHA1&quot;);
-
-  public MemcachedClient buildMemcachedClient() {
-    final InetSocketAddress addr = new InetSocketAddress(&quot;127.0.0.1&quot;, 11211);
-    return new MemcachedClient(addr);
-  }
-
-  @Override
-  public WebSessionManager buildSessionManager() {
-    try {
-      final SpyMemcachedSessionStore sessionStore = new SpyMemcachedSessionStore(
-          this.buildMemcachedClient(), 1024);
-      final Mac xsrfTokenMac = Mac.getInstance(&quot;HmacSHA1&quot;);
-      xsrfTokenMac.init(signingKey);
-      return new DefaultWebSessionManager(
-          &quot;avans_session_id&quot;,
-          this.getRequest(),
-          sessionStore,
-          xsrfTokenMac);
-    } catch (final NoSuchAlgorithmException | InvalidKeyException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-</code></pre><h2>LICENSE</h2>
-<pre><code>The MIT License (MIT)
-Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ &lt;tokuhirom@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</code></pre></div>
+    <div class="readme">null</div>
 
       </div>
     </div>
