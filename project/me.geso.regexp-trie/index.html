@@ -19,7 +19,7 @@
       <p>regexp-trie</p>
       <ul>
             <p>
-            <a href="../../javadoc/me/geso/regexp-trie/0.1.5/apidocs/index.html">
+            <a href="../../javadoc/me/geso/regexp-trie/0.1.8/apidocs/index.html">
               <span class="fa fa-file-text-o"></span> javadoc
             </a>
             <a href="https://github.com/tokuhirom/regexp-trie/">
@@ -36,14 +36,59 @@
   <dependency>
     <groupId>me.geso</groupId>
     <artifactId>regexp-trie</artifactId>
-    <version>0.1.5</version>
+    <version>0.1.8</version>
   </dependency>
 </dependencies></textarea>
     </ul>
 
     <hr>
 
-    <div class="readme">null</div>
+    <div class="readme"><h1>regexp-trie</h1><p><a href="https://travis-ci.org/tokuhirom/regexp-trie"><img src="https://travis-ci.org/tokuhirom/regexp-trie.svg?branch=master"  alt="Build Status"/></a></p><p>Create complex regular expression from tokens by Trie.</p><h2>SYNOPSIS in GROOVY</h2>
+<pre><code>@GrabResolver(name=&#39;tokuhirom&#39;, root=&#39;https://tokuhirom.github.io/maven/releases/&#39;)
+@Grab(&#39;me.geso:regexp-trie:0.0.2&#39;)
+import me.geso.regexp_trie.RegexpTrie;
+
+def trie = new RegexpTrie();
+[&quot;foobar&quot;, &quot;fooxar&quot;, &quot;foozap&quot;, &quot;fooza&quot;].forEach {
+    trie.add(it);
+}
+println(trie.regexp()) // → (?:foo(?:bar|xar|zap?))
+</code></pre><h2>DESCRIPTION</h2><p>This module generates regular expression from list of tokens. It builds a trie-ized regexp as above.</p><p>You can only add plain strings into regular expression. You can't use meta characters in it. <code>a+b</code> is treated as <code>a\+b</code>, not "more than one a's followed by b".</p><h2>Using with Maven</h2><p>You need to add following snippet into your pom.xml.</p>
+<pre><code>&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;tokuhirom&lt;/id&gt;
+    &lt;url&gt;https://tokuhirom.github.io/maven/releases/&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;me.geso&lt;/groupId&gt;
+    &lt;artifactId&gt;regexp-trie&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><h2>COPYRIGHT AND LICENSE</h2>
+<pre><code>The MIT License (MIT)
+Copyright © 2014 Tokuhiro Matsuno, http://64p.org/ &lt;tokuhirom@gmail.com&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</code></pre><h2>Thanks to</h2><p>This module was ported from <a href="https://metacpan.org/pod/Regexp::Trie">@dankogai's Regexp::Trie</a>. Thanks to dankogai++.</p></div>
 
       </div>
     </div>
