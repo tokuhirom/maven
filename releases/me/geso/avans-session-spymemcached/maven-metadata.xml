@@ -3,12 +3,17 @@
   <groupId>me.geso</groupId>
   <artifactId>avans-session-spymemcached</artifactId>
   <versioning>
-    <release>0.27.4</release>
+    <release>0.27.9</release>
     <versions>
       <version>0.0.2</version>
       <version>0.27.3</version>
       <version>0.27.4</version>
+      <version>0.27.5</version>
+      <version>0.27.6</version>
+      <version>0.27.7</version>
+      <version>0.27.8</version>
+      <version>0.27.9</version>
     </versions>
-    <lastUpdated>20141003215344</lastUpdated>
+    <lastUpdated>20141004055731</lastUpdated>
   </versioning>
 </metadata>
