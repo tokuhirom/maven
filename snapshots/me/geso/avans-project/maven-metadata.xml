@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>me.geso</groupId>
+  <artifactId>avans-project</artifactId>
+  <versioning>
+    <versions>
+      <version>0.31.3-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20141009013925</lastUpdated>
+  </versioning>
+</metadata>
